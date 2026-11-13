@@ -308,7 +308,7 @@ local Library = (function()
     Library.ThemeName = "Christmas"
     Library.Assets = {
         Shadow = "rbxassetid://6014261993", Glow = "rbxassetid://8992230677",
-        Logo = "rbxassetid://103859712365480",
+        Logo = "rbxassetid://70433438040738",
     }
     local LUCIDE_URL = "https://raw.githubusercontent.com/Footagesus/Icons/refs/heads/main/lucide/dist/Icons.lua"
     local lucideSet = nil
