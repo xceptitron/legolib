@@ -8876,14 +8876,10 @@ local Library = (function()
         end
     end
     Library.BackgroundPresets = {
-        ["Deep Violet"] = "rbxassetid://136310484943077",
-        ["Blood Red"] = "rbxassetid://121343473918667", ["Cyanic"] = "rbxassetid://95656189244173",
-        ["Amber Glow"] = "rbxassetid://107795771598485",
-        ["Bloomings"] = "rbxassetid://133541508207801",
-        ["Lavender Pink"] = "rbxassetid://126107479485287",
+        ["Home Alone"] = "rbxassetid://72593861886871",
     }
     Library.BackgroundPresetOrder = {
-        "Deep Violet", "Blood Red", "Cyanic", "Amber Glow", "Bloomings", "Lavender Pink"
+        "Home Alone",
     }
     Library._imageExtensions = {
         png = true, jpg = true, jpeg = true, webp = true, gif = true, bmp = true
