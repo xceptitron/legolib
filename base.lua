@@ -8876,7 +8876,7 @@ local Library = (function()
         end
     end
     Library.BackgroundPresets = {
-        ["Home Alone"] = "rbxassetid://72593861886871",
+        ["Home Alone"] = "rbxassetid://132546467351417",
     }
     Library.BackgroundPresetOrder = {
         "Home Alone",
