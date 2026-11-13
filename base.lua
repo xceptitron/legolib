@@ -500,7 +500,7 @@ local Library = (function()
             if type(writefile) ~= "function" or typeof(getcustomasset) ~= "function" then
                 return
             end
-            local folder = "AirFlowAssets"
+            local folder = "ElevateAssets"
             if type(isfolder) == "function" and type(makefolder) == "function" and not isfolder(
                 folder
             ) then
@@ -16147,7 +16147,6 @@ local Library = (function()
             )
             versionChip.Active = false
             versionText.FontFace = Fonts.Bold
-            versionIcon.Size = UDim2.fromOffset(13, 13)
             self.VersionLabel = versionText
         end
         local expiryChip, expiryText = self:_homeChip(chips, 2, "clock", "")
