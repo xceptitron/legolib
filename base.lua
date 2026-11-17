@@ -3835,21 +3835,27 @@ local Library = (function()
         self.Window:_listen(
             "Began",
             function(input, gameProcessed)
-                if input.UserInputType ~= Enum.UserInputType.Keyboard then
+                if input.UserInputType ~= Enum.UserInputType.Keyboard
+                    and input.UserInputType ~= Enum.UserInputType.MouseButton1
+                    and input.UserInputType ~= Enum.UserInputType.MouseButton2
+                    and input.UserInputType ~= Enum.UserInputType.MouseButton3 then
                     return
                 end
                 if self_.Listening then
-                    self.Window._consumedKey = input.KeyCode
+                    local stored = input.UserInputType == Enum.UserInputType.Keyboard
+                        and input.KeyCode or input.UserInputType
+                    self.Window._consumedKey = stored
                     self.Window._consumedAt = os.clock()
-                    if input.KeyCode == Enum.KeyCode.Escape then
+                    if stored == Enum.KeyCode.Escape then
                         self_.Listening = false
                         render()
                     else
-                        self_:Set(input.KeyCode)
+                        self_:Set(stored)
                     end
                     return
                 end
-                if not gameProcessed and self_.Value ~= nil and input.KeyCode == self_.Value then
+                if not gameProcessed and self_.Value ~= nil
+                    and (input.KeyCode == self_.Value or input.UserInputType == self_.Value) then
                     safeCall(opts.Callback, input.KeyCode)
                 end
             end, self_
