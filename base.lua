@@ -7757,7 +7757,11 @@ local Library = (function()
             value = element:_saveValue()
         end
         if kind == "Keybind" then
-            return {Type = kind, Value = value and value.Name or nil}
+            local stored
+            if type(value) == "string" then
+                stored = Enum.KeyCode[value] or Enum.UserInputType[value]
+            end
+            element:Set(stored, silent)
         elseif kind == "ColorPicker" then
             return {
                 Type = kind, Value = typeof(value) == "Color3" and {Hex = colorToHex(value)} or nil
