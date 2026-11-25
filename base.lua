@@ -7757,11 +7757,15 @@ local Library = (function()
             value = element:_saveValue()
         end
         if kind == "Keybind" then
+            local name = type(value) == "string" and value
+                or (typeof(value) == "EnumItem" and value.Name)
+                or (type(value) == "table" and value.Name)
             local stored
-            if type(value) == "string" then
-                stored = Enum.KeyCode[value] or Enum.UserInputType[value]
+            if name then
+                stored = Enum.KeyCode[name] or Enum.UserInputType[name]
             end
             element:Set(stored, silent)
+            return {Type = kind, Value = name}
         elseif kind == "ColorPicker" then
             return {
                 Type = kind, Value = typeof(value) == "Color3" and {Hex = colorToHex(value)} or nil
@@ -7773,7 +7777,12 @@ local Library = (function()
         local kind = element._type
         local value = entry.Value
         if kind == "Keybind" then
-            element:Set(type(value) == "string" and Enum.KeyCode[value] or nil, silent)
+            element:Set(
+                type(value) == "string"
+                    and (Enum.KeyCode[value] or Enum.UserInputType[value])
+                    or nil,
+                silent
+            )
         elseif kind == "ColorPicker" then
             local color = colorFromValue(value)
             if color then
